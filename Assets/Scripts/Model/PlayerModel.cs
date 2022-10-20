@@ -10,5 +10,7 @@ namespace Script.PlayerModel
         public float sensitivity;
         //<====Player movement====>
         public float speed;
+        //<====Player data====>
+        public float health;
     }    
 }

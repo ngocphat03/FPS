@@ -1,12 +1,16 @@
 namespace Script.PlayerView
 {
     using UnityEngine;
+    using UnityEngine.UI;
     using Ensign;
     using Ensign.Unity.MVC;
     using Script.PlayerModel;
     using Script.PlayerController;
+    using Script.GameManager;
     public class PlayerView : View<PlayerController, PlayerModel>
     {
+        [SerializeField] private Slider SliderHealth;
+
         private void Awake()
         {
             HideMouse();
@@ -16,7 +20,13 @@ namespace Script.PlayerView
         {
             PlayerMove();
             MovePlayerCameraWithMouse();
+            SetHealth();
+            PlayerDie();
         }
+
+        /// <summary>
+        /// Move player with AWSD
+        /// </summary>
         public void PlayerMove()
         {
             //Move player to top
@@ -39,5 +49,28 @@ namespace Script.PlayerView
         /// Hide mouse
         /// </summary>
         private void HideMouse() { Cursor.lockState = CursorLockMode.Locked; }
+
+        void OnTriggerEnter (Collider myTrigger) 
+        {
+            if(myTrigger.gameObject.tag == "Bullet")
+            {
+                Debug.Log("Player: " + this.Model.health);
+                this.Controller.SubtractHealth();
+            }
+        }   
+
+        private void PlayerDie() 
+        {
+            if(this.Model.health <= 0)
+            {
+                //GameManager.Instance.GameOver();
+                Debug.Log("Player die");
+            }
+        }
+        
+        /// <summary>
+        /// Change health bar
+        /// </summary>
+        public void SetHealth() { SliderHealth.value = this.Model.health; }
     }    
 }

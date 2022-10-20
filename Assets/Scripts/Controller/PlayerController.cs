@@ -17,9 +17,13 @@ namespace Script.PlayerController
                 sensitivity     = 2f,
                 //<====Player movement====>
                 speed           = 4f,
-
+                //<====Player data====>
+                health          = 100f,
             });
         }
+
+        public void SubtractHealth() { this.Model.health--; }
+
     }
 
 }
