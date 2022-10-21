@@ -16,13 +16,14 @@ namespace Script.PlayerController
                 rotationY       = 0f,
                 sensitivity     = 2f,
                 //<====Player movement====>
-                speed           = 4f,
+                speed           = 6f,
                 //<====Player data====>
                 health          = 100f,
+                damageTaken     = 0f,
             });
         }
 
-        public void SubtractHealth() { this.Model.health--; }
+        public void SubtractHealth() { this.Model.health -= this.Model.damageTaken; }
 
     }
 

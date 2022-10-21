@@ -16,7 +16,7 @@ namespace Script.EnemyController
             });
         }
 
-        public void SubtractHealth() { this.Model.health--; }
+        public void SubtractHealth() { this.Model.health -= this.Model.damageTaken; }
 
     }
 

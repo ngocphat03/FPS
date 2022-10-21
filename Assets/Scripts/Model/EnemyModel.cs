@@ -6,5 +6,6 @@ namespace Script.EnemyModel
     {        
         //<====Enemy data====>
         public float health;
+        public float damageTaken;
     }    
 }

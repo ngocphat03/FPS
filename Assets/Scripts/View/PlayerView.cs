@@ -6,7 +6,6 @@ namespace Script.PlayerView
     using Ensign.Unity.MVC;
     using Script.PlayerModel;
     using Script.PlayerController;
-    using Script.GameManager;
     public class PlayerView : View<PlayerController, PlayerModel>
     {
         [SerializeField] private Slider SliderHealth;
@@ -22,6 +21,7 @@ namespace Script.PlayerView
             MovePlayerCameraWithMouse();
             SetHealth();
             PlayerDie();
+            Check();
         }
 
         /// <summary>
@@ -40,10 +40,14 @@ namespace Script.PlayerView
         }
 
         private void MovePlayerCameraWithMouse()
-        {            
-            this.Model.rotationX = Input.GetAxis("Mouse Y");
-            this.Model.rotationY = Input.GetAxis("Mouse X");
-            transform.eulerAngles -= new Vector3(this.Model.rotationX * this.Model.sensitivity,this.Model.rotationY* -1f * this.Model.sensitivity,0);
+        {
+            if(GameManager.Instance.CanMovePlayerCamera)
+            {
+                this.Model.rotationX = Input.GetAxis("Mouse Y");
+                this.Model.rotationY = Input.GetAxis("Mouse X");
+                transform.eulerAngles -= new Vector3(this.Model.rotationX * this.Model.sensitivity,this.Model.rotationY* -1f * this.Model.sensitivity,0);
+
+            }            
         }
         /// <summary>
         /// Hide mouse
@@ -54,6 +58,7 @@ namespace Script.PlayerView
         {
             if(myTrigger.gameObject.tag == "Bullet")
             {
+                this.Model.damageTaken = 5;
                 Debug.Log("Player: " + this.Model.health);
                 this.Controller.SubtractHealth();
             }
@@ -63,8 +68,15 @@ namespace Script.PlayerView
         {
             if(this.Model.health <= 0)
             {
-                //GameManager.Instance.GameOver();
-                Debug.Log("Player die");
+                GameManager.Instance.GameOver();
+            }
+        }
+
+        private void Check()
+        {
+            if(transform.position.y < -10)
+            {
+                transform.position = new Vector3(10, 5, -30);
             }
         }
         

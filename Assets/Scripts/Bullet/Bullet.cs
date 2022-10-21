@@ -4,7 +4,7 @@ namespace Script.BulletNumberOne
 
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float speed = 15f;
+        [SerializeField] private float speed = 30f;
         [SerializeField] private float timeStart = 3f;
         private float lifeTimer;
         private float timeStop = 0f;
@@ -28,6 +28,6 @@ namespace Script.BulletNumberOne
         {
             lifeTimer -= Time.deltaTime;
             if(lifeTimer <= timeStop) { Destroy(gameObject); }  
-        } 
+        }
     }   
 }

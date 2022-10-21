@@ -3,7 +3,7 @@ namespace Script.TeleportSkill
     using UnityEngine;
     public class Teleport : MonoBehaviour
     {
-        private float distanceTeleport = 4f;
+        private float distanceTeleport = 10f;
         
         private void Update()
         {

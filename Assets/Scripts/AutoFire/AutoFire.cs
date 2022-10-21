@@ -10,12 +10,12 @@ namespace Script.AutoFire
 
         void Start()
         {
-            InvokeRepeating("SetTimerToFire", 2.0f, 0.3f);
+            InvokeRepeating("SetTimerToFire", 2.0f, 1f);
         }
         private void SetTimerToFire()
         {
             GameObject bulletObject = Instantiate(bullerPrefab, bulletSpawnPoint.transform.position, transform.rotation);
-           bulletObject.transform.LookAt(Player);
+            bulletObject.transform.LookAt(Player);
         }
     }    
 }

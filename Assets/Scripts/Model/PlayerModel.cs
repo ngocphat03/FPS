@@ -12,5 +12,6 @@ namespace Script.PlayerModel
         public float speed;
         //<====Player data====>
         public float health;
+        public float damageTaken;
     }    
 }
