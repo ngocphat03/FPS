@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - TutorialPopup
+  - SettingPopup
+  - TAZOFX
+  - loweffect
+  - ExitPopup
   layers:
   - Default
   - TransparentFX

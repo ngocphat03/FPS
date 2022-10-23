@@ -46,7 +46,7 @@ namespace Script.PlayerView
                 this.Model.rotationX = Input.GetAxis("Mouse Y");
                 this.Model.rotationY = Input.GetAxis("Mouse X");
                 transform.eulerAngles -= new Vector3(this.Model.rotationX * this.Model.sensitivity,this.Model.rotationY* -1f * this.Model.sensitivity,0);
-
+                Debug.Log(GameManager.Instance.sensitivityMouse);
             }            
         }
         /// <summary>
