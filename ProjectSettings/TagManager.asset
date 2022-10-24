@@ -10,6 +10,8 @@ TagManager:
   - TAZOFX
   - loweffect
   - ExitPopup
+  - BulletPlus
+  - GameWinLosePopup
   layers:
   - Default
   - TransparentFX

@@ -36,7 +36,6 @@ namespace Script.EnemyView
             {
                 this.Model.damageTaken = 5f;
                 this.Controller.SubtractHealth();
-                Debug.Log("Enemy: " + this.Model.health);
             }
         }
     }

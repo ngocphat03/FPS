@@ -46,7 +46,6 @@ namespace Script.PlayerView
                 this.Model.rotationX = Input.GetAxis("Mouse Y");
                 this.Model.rotationY = Input.GetAxis("Mouse X");
                 transform.eulerAngles -= new Vector3(this.Model.rotationX * this.Model.sensitivity,this.Model.rotationY* -1f * this.Model.sensitivity,0);
-                Debug.Log(GameManager.Instance.sensitivityMouse);
             }            
         }
         /// <summary>
@@ -59,7 +58,12 @@ namespace Script.PlayerView
             if(myTrigger.gameObject.tag == "Bullet")
             {
                 this.Model.damageTaken = 5;
-                Debug.Log("Player: " + this.Model.health);
+                this.Controller.SubtractHealth();
+            }
+
+            if(myTrigger.gameObject.tag == "BulletPlus")
+            {
+                this.Model.damageTaken = 30;
                 this.Controller.SubtractHealth();
             }
         }   
